@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable name="viewAndText"
+            type="com.tplink.tapo.model.ViewAndText"/>
+    </data>
+    <LinearLayout
+        android:id="@+id/LL_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/view_group"
+            android:layout_width="3dp"
+            android:layout_height="12dp"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:background="#375DEC" />
+
+        <TextView
+            android:id="@+id/tv_title_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewAndText.title}"
+            android:layout_margin="5dp"
+            android:textColor="@color/colorBlack" />
+    </LinearLayout>
+</layout>

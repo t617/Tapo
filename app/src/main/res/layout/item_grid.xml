@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="isLoading"
+            type="boolean" />
+        <variable
+            name="isChecked"
+            type="boolean" />
+        <variable name="subject"
+            type="com.tplink.tapo.model.Subject"/>
+        <variable name="subjectClickCallback"
+            type="com.tplink.tapo.view.SubjectClickCallback"/>
+    </data>
+    <RelativeLayout
+        android:id="@+id/RL_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp"
+        android:background="@drawable/bg_white"
+        android:elevation="2dp"
+        android:padding="5dp"
+        android:onLongClick="@{(view) -> subjectClickCallback.onItemLongClick(view)}"
+        android:onClick="@{(view) -> subjectClickCallback.onItemClick(view)}">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:padding="5dp"
+            android:text="@{subject.title}"
+            android:textSize="15dp" />
+        <ImageView
+            android:id="@+id/img_more"
+            android:layout_alignParentEnd="true"
+            android:padding="5dp"
+            android:src="@{subject.imgMore}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_below="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorGray"
+            android:padding="5dp"
+            android:text="@{subject.location}"
+            android:textSize="12dp" />
+        <ImageView
+            android:id="@+id/img"
+            android:layout_below="@+id/tv_location"
+            android:layout_alignParentBottom="true"
+            android:padding="5dp"
+            app:src="@{subject.img}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Switch
+            android:id="@+id/switch_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:padding="3dp"
+            tools:ignore="MissingConstraints"
+            app:visibleGone="@{!isLoading}"
+            android:onCheckedChanged="@{(cb, isChecked) -> subjectClickCallback.onSwitchClick(cb, isChecked)}"
+            android:thumb="@drawable/switch_custom_thumb_selector"
+            android:track="@drawable/switch_custom_track_selector"/>
+
+        <CheckBox
+            android:id="@+id/checkbox_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:visibleGone="@{isLoading}"
+            android:background="@drawable/check_box_selector"
+            android:checked="@{isChecked}"
+            android:onCheckedChanged="@{(cb, isChecked) -> subjectClickCallback.onCheckBoxClick(cb, isChecked)}"/>
+
+    </RelativeLayout>
+</layout>

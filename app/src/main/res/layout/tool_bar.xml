@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="isLoading"
+            type="boolean" />
+    </data>
+    <RelativeLayout
+        android:id="@+id/RL_long_click"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorToolBG"
+        app:visibleGone="@{isLoading}">
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="23dp"
+            android:layout_height="23dp"
+            android:layout_margin="18dp"
+            android:src="@mipmap/close"/>
+        <TextView
+            android:id="@+id/tv_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_cancel"
+            android:layout_margin="18dp"
+            android:textSize="15sp"
+            android:textColor="@color/colorBlack" />
+        <TextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorBlack"
+            android:layout_margin="18dp"
+            android:textSize="15sp"
+            android:layout_alignParentEnd="true"
+            android:text="储存"/>
+    </RelativeLayout>
+</layout>
